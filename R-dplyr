@@ -1,0 +1,13 @@
+path <- "C:/Contents/Kaggle/Titanic/titanic/train.csv"
+tbl<-read.csv(path)
+tbl
+
+library(dplyr)
+temp<-select(
+       .data=tbl,
+       PassengerId, Survived, Pclass, Name, Sex,  Age)
+tempmale <- filter(.data = temp, Sex=="male")
+tempmale1 <- mutate(.data=tempmale, age_factor = Age*1.05)
+tempmale2 <-group_by(.data=tempmale1, Age)
+head(tempmale2)
+
