@@ -50,4 +50,47 @@ library(ISLR) #for the datase
 data("Wage")
 ggplot(data = Wage, mapping = aes(x = age, y = wage)) + geom_point()
 
+## Statistical Model ##
+
+ library("MASS")
+> data("iris")
+> head(iris)
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+> plot(x=iris$Sepal.Length, y=iris$Sepal.Width, main = "Iris petal length vs width", xlab="Petal length", ylab="Petal width")
+> model <- lm(formula = iris$Petal.Length ~ iris$Petal.Width, data = iris)
+> plot(x=iris$Petal.Length, y=iris$Petal.Width, main = "Iris petal length vs width", xlab="Petal length", ylab="Petal width")
+> summary(model)
+
+Call:
+lm(formula = iris$Petal.Length ~ iris$Petal.Width, data = iris)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.33542 -0.30347 -0.02955  0.25776  1.39453 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       1.08356    0.07297   14.85   <2e-16 ***
+iris$Petal.Width  2.22994    0.05140   43.39   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4782 on 148 degrees of freedom
+Multiple R-squared:  0.9271,	Adjusted R-squared:  0.9266 
+F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
+
+> lines(x = iris$Petal.Length, y = model$fitted, col = "red", lwd = 3)
+> cor(x=iris$Petal.Length, y =iris$Petal.Width)
+[1] 0.9628654
+> lines(x = iris$Petal.Length, y = model$fitted, col = "red", lwd = 3)
+> #predict
+> predict(object = model, newdata = data.frame(Petal.Length = c(2,5,7)))
+      
+
 
