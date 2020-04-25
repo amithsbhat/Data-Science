@@ -44,4 +44,10 @@ head(tempmale2)
 > cor(x=Cars93$Price, y=Cars93$Passengers )
 [1] 0.05786007
 
+## Visualization ##
+
+library(ISLR) #for the datase
+data("Wage")
+ggplot(data = Wage, mapping = aes(x = age, y = wage)) + geom_point()
+
 
