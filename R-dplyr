@@ -1,3 +1,4 @@
+## Basics ##
 path <- "C:/Contents/Kaggle/Titanic/titanic/train.csv"
 tbl<-read.csv(path)
 tbl
@@ -10,4 +11,37 @@ tempmale <- filter(.data = temp, Sex=="male")
 tempmale1 <- mutate(.data=tempmale, age_factor = Age*1.05)
 tempmale2 <-group_by(.data=tempmale1, Age)
 head(tempmale2)
+
+## Descriptive stats ##
+
+> #Frequency table
+> table(Cars93$Manufacturer)
+
+        Acura          Audi           BMW         Buick      Cadillac     Chevrolet      Chrylser      Chrysler 
+            2             2             1             4             2             8             1             2 
+        Dodge         Eagle          Ford           Geo         Honda       Hyundai      Infiniti         Lexus 
+            6             2             8             2             3             4             1             2 
+      Lincoln         Mazda Mercedes-Benz       Mercury    Mitsubishi        Nissan    Oldsmobile      Plymouth 
+            2             5             2             2             2             4             4             1 
+      Pontiac          Saab        Saturn        Subaru        Suzuki        Toyota    Volkswagen         Volvo 
+            5             1             1             3             1             4             4             2 
+
+> min(Cars93$Weight)
+[1] 1695
+> max(Cars93$Weight)
+[1] 4105
+> mean(Cars93$Weight)
+[1] 3072.903
+> median(Cars93$Weight)
+[1] 3040
+> quantile(Cars93$Weight)
+  0%  25%  50%  75% 100% 
+1695 2620 3040 3525 4105 
+> sd(Cars93$Weight)
+[1] 589.8965
+> sum(Cars93$Weight)
+[1] 285780
+> cor(x=Cars93$Price, y=Cars93$Passengers )
+[1] 0.05786007
+
 
