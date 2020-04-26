@@ -92,5 +92,32 @@ F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
 > #predict
 > predict(object = model, newdata = data.frame(Petal.Length = c(2,5,7)))
       
+## decision tree classifier ##
+
+> library(MASS)
+> data(iris)
+> set.seed(42)
+> indexes<- sample(x=1:150, size=100)
+> print(indexes)
+  [1]  49  65  74 146 122 150 128  47  24  71 100  89 110  20 114 111 131  41 139  27 109   5  84  34  92 104   3  58  97
+ [30]  42 142  30  43  15  22 123   8  36  68  86  18 130 126  69   4  98  50  99  88  87 145  26   6 105   2 124  21  96
+ [59] 115  10  40 129  33 140  73  29  76   9  35  16 107  93 120 138  80  55  90  94  57 121  77  13  53  54  32  60  85
+ [88]  17  44  83  72 135 118 149  48 136  64  38   1 144
+> train = iris[indexes,]
+> test =iris[-indexes,]
+> library(tree)
+> model<- tree(formula= Species ~., data =iris)
+> summary(model)
+
+Classification tree:
+tree(formula = Species ~ ., data = iris)
+Variables actually used in tree construction:
+[1] "Petal.Length" "Petal.Width"  "Sepal.Length"
+Number of terminal nodes:  6 
+Residual mean deviance:  0.1253 = 18.05 / 144 
+Misclassification error rate: 0.02667 = 4 / 150 
+> plot(model)
+> text(model)
+> 
 
 
